@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Betrand-Paradox.iml" filepath="$PROJECT_DIR$/Betrand-Paradox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bertrand-Paradox.iml" filepath="$PROJECT_DIR$/Bertrand-Paradox.iml" />
     </modules>
   </component>
 </project>
