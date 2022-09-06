@@ -1,3 +1,2 @@
-# Bertrand-Paradox
+# Bertrand-Paradox-Code-Documentation
 
-A simulation of the Betrand Paradox
