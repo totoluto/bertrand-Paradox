@@ -69,7 +69,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>ch.kbw.totoluto.betrandparadox/ch.kbw.totoluto.bertrandparadox.HelloApplication
+                            <mainClass>ch.kbw.totoluto.betrandparadox/ch.kbw.totoluto.bertrandparadox.Main
                             </mainClass>
                         </configuration>
                     </execution>
