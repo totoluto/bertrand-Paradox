@@ -1,4 +1,4 @@
-package ch.kbw.totoluto.betrandparadox;
+package ch.kbw.totoluto.bertrandparadox;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

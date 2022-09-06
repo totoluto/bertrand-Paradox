@@ -1,4 +1,4 @@
-package ch.kbw.totoluto.betrandparadox;
+package ch.kbw.totoluto.bertrandparadox;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
