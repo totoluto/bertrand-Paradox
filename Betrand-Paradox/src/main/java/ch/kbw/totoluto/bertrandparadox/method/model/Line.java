@@ -2,6 +2,11 @@ package ch.kbw.totoluto.bertrandparadox.method.model;
 
 import javafx.geometry.Point2D;
 
+/**
+ * @author totoluto (Dev alias)
+ * @version 01.12.2022
+ */
+
 public class Line {
     private Point2D startCord;
     private Point2D endCord;

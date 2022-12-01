@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 /**
  * @author totoluto (Dev alias)
- * @version 15.11.2022
+ * @version 01.12.2022
  */
 
 public class MethodController{
