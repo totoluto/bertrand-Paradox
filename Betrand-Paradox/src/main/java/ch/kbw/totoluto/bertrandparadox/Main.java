@@ -25,6 +25,7 @@ public class Main extends Application {
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("IconTemp.png"))));
 
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

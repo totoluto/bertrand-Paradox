@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -29,9 +30,19 @@ public class MethodController{
     private TextField delay;
     @FXML
     private TextField iterations;
+    @FXML
+    private Button start;
+    @FXML
+    private Button reset;
+    @FXML
+    private Button endpoint;
+    @FXML
+    private Button middle;
+    @FXML
+    private Button random;
+
 
     private String methodSwitch = "Point";
-    private GraphicsContext graphicsContext;
     private RandomEndPointController repc = new RandomEndPointController();
 
     @FXML
@@ -44,7 +55,7 @@ public class MethodController{
                 repc.setCanvas(canvas);
                 repc.clearCanvas();
                 repc.drawComponents();
-
+                repc.drawLines(start, reset, iterations, delay, probability, endpoint, random, middle);
                 break;
             case "MiddlePoint":
                 //Do Sth
@@ -54,29 +65,50 @@ public class MethodController{
 
     @FXML
     public void reset(ActionEvent e) throws IOException{
-        //Clear Components
+        canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
+        probability.setText("NaN");
+        switch (methodSwitch){
+            case "Point":
+                //Do sth
+                break;
+            case "EndPoint":
+                repc.setCanvas(canvas);
+                repc.drawComponents();
+                break;
+            case "MiddlePoint":
+                //Do Sth
+                break;
+        }
     }
 
     @FXML
     public void handleEndPoint(ActionEvent e) throws IOException{ //1/3
         methodSwitch = "EndPoint";
         method.setText("Random end point");
+        canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
+        probability.setText("NaN");
+        iterations.setText("1000");
+        delay.setText("10");
         repc.setCanvas(canvas);
         repc.drawComponents();
-        //TODO: Start canvas init
     }
 
     @FXML
     public void handleMiddlePoint(ActionEvent e) throws IOException{ //1/2
         methodSwitch = "MiddlePoint";
         method.setText("Random middle point");
-        //TODO: Start canvas init
+        canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
+        probability.setText("NaN");
+        iterations.setText("1000");
+        delay.setText("10");
     }
 
     @FXML
     public void handlePoint(ActionEvent e) throws IOException{ //1/4
         methodSwitch = "Point";
         method.setText("Random point");
-        //TODO: Start canvas init
+        canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
+        iterations.setText("1000");
+        delay.setText("10");
     }
 }
