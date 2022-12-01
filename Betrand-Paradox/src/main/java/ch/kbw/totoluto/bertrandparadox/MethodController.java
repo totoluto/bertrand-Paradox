@@ -43,10 +43,12 @@ public class MethodController{
 
 
     private String methodSwitch = "Point";
+    //Create Method controller
     private RandomEndPointController repc = new RandomEndPointController();
 
     @FXML
     public void start(ActionEvent e) throws IOException{
+        //Check which method is selected and run the method
         switch (methodSwitch){
             case "Point":
                 //Do sth
@@ -65,6 +67,7 @@ public class MethodController{
 
     @FXML
     public void reset(ActionEvent e) throws IOException{
+        //Clear canvas, reset probability and draw components
         canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
         probability.setText("NaN");
         switch (methodSwitch){
@@ -81,6 +84,8 @@ public class MethodController{
         }
     }
 
+
+    //Change method and reset settings
     @FXML
     public void handleEndPoint(ActionEvent e) throws IOException{ //1/3
         methodSwitch = "EndPoint";

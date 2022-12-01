@@ -32,11 +32,13 @@ public class RandomEndPointController {
         this.triangle = new Triangle();
     }
 
+    //Set canvas of fxml to this one
     public void setCanvas(Canvas canvas) {
         this.canvas = canvas;
         this.graphicsContext = canvas.getGraphicsContext2D();
     }
 
+    //Clear and draw triangle and circle
     public void drawComponents(){
         graphicsContext.clearRect(0,0, canvas.getWidth(), canvas.getHeight());
         createCircle();
@@ -62,6 +64,7 @@ public class RandomEndPointController {
         graphicsContext.clearRect(0,0, canvas.getWidth(), canvas.getHeight());
     }
 
+    //generate lines for later usage
     public ArrayList<Line> generateLinesWithRandomStartPoint(int iterations){
         ArrayList<Point2D> pointsOnCircle = new ArrayList();
         ArrayList<Line> lines = new ArrayList();
@@ -80,12 +83,15 @@ public class RandomEndPointController {
     }
 
     public void drawLines(Button start, Button reset, TextField iterationInput, TextField delayInput, Label probabilityLabel, Button endpoint, Button random, Button middle){
+        //AtomicReference because during thread var can't be changed normally (it's just a counter)
         AtomicReference<Integer> longLines = new AtomicReference<>(0);
         AtomicReference<Integer> shortLines = new AtomicReference<>(0);
+        //Save all generated lines in an arraylist
         ArrayList<Line> lines = generateLinesWithRandomStartPoint(Integer.parseInt(iterationInput.getText()));
 
-
+        //Disable buttons and Inputs to prevent disturbing actions
         toggleInputs(true, start, reset, iterationInput, delayInput, endpoint, random, middle);
+        //Create a thread to visualize the lines and create a delay between the actions
         new Thread(() -> {
             for (Line line: lines) {
                 try{
@@ -96,7 +102,7 @@ public class RandomEndPointController {
 
                 Platform.runLater(() -> {
                     graphicsContext.setLineWidth(1);
-                    //Check if length is greater than Triangle length
+                    //Check if length is greater than triangle length and change color to visualize line
                     if(triangle.getLength() <= line.getLength()){
                         graphicsContext.setStroke(Color.rgb(255, 0, 0));
                         longLines.updateAndGet(v -> v + 1);
@@ -104,7 +110,9 @@ public class RandomEndPointController {
                         graphicsContext.setStroke(Color.rgb(119, 221, 231));
                         shortLines.updateAndGet(v -> v + 1);
                     }
+                    //Draw the line
                     graphicsContext.strokeLine(line.getStartCord().getX(), line.getStartCord().getY(), line.getEndCord().getX(), line.getEndCord().getY());
+                    //Calculate probability
                     double longLinesCount = longLines.get().doubleValue();
                     double shortLinesCount = shortLines.get().doubleValue();
                     double total = shortLinesCount + longLinesCount;
@@ -113,8 +121,10 @@ public class RandomEndPointController {
                 });
             }
 
+            //Draw over lines to visualize the lines in the circle and triangle
             createCircle();
             createTriangle();
+            //Toggle back inputs and buttons
             toggleInputs(false, start, reset, iterationInput, delayInput, endpoint, random, middle);
         }).start();
     }

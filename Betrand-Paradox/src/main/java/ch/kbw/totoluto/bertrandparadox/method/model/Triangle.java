@@ -20,6 +20,7 @@ public class Triangle {
     }
 
     public void constructInCircle(Circle circle){
+        //Calculating position and height of triangle in circle
         this.height = 1.5 * circle.getRadius();
         this.length = 2 * height / Math.sqrt(3);
 
