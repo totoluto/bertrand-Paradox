@@ -2,6 +2,7 @@ package ch.kbw.totoluto.bertrandparadox;
 
 import ch.kbw.totoluto.bertrandparadox.method.RandomEndPointController;
 import ch.kbw.totoluto.bertrandparadox.method.RandomMiddlePointController;
+import ch.kbw.totoluto.bertrandparadox.method.RandomRadiusPointController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -45,6 +46,7 @@ public class MethodController{
     //Create Method controller
     private RandomEndPointController repc = new RandomEndPointController();
     private RandomMiddlePointController rmpc = new RandomMiddlePointController();
+    private RandomRadiusPointController rrpc = new RandomRadiusPointController();
 
     @FXML
     public void start(ActionEvent e) throws IOException{
@@ -52,7 +54,10 @@ public class MethodController{
         switch (methodSwitch){
             case "Radius":
                 probability.setText("NaN");
-                //Do sth
+                rrpc.setCanvas(canvas);
+                rrpc.clearCanvas();
+                rrpc.drawComponents();
+                rrpc.drawLines(start, reset, iterations, delay, probability, endpoint, random, middle);
                 break;
             case "EndPoint":
                 probability.setText("NaN");
@@ -78,7 +83,8 @@ public class MethodController{
         probability.setText("NaN");
         switch (methodSwitch){
             case "Radius":
-                //Do sth
+                rrpc.setCanvas(canvas);
+                rrpc.drawComponents();
                 break;
             case "EndPoint":
                 repc.setCanvas(canvas);
@@ -125,8 +131,7 @@ public class MethodController{
         probability.setText("NaN");
         iterations.setText("1000");
         delay.setText("10");
+        rrpc.setCanvas(canvas);
+        rrpc.drawComponents();
     }
-
-    //Basic Methods
-
 }
