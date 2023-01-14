@@ -1,9 +1,9 @@
 package ch.kbw.totoluto.bertrandparadox;
 
 import ch.kbw.totoluto.bertrandparadox.method.RandomEndPointController;
+import ch.kbw.totoluto.bertrandparadox.method.RandomMiddlePointController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -11,12 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * @author totoluto (Dev alias)
- * @version 01.12.2022
+ * @version 14.01.2023
  */
 
 public class MethodController{
@@ -41,26 +39,34 @@ public class MethodController{
     @FXML
     private Button random;
 
+    public GraphicsContext graphicsContext;
 
-    private String methodSwitch = "Point";
+    private String methodSwitch = "Radius";
     //Create Method controller
     private RandomEndPointController repc = new RandomEndPointController();
+    private RandomMiddlePointController rmpc = new RandomMiddlePointController();
 
     @FXML
     public void start(ActionEvent e) throws IOException{
         //Check which method is selected and run the method
         switch (methodSwitch){
-            case "Point":
+            case "Radius":
+                probability.setText("NaN");
                 //Do sth
                 break;
             case "EndPoint":
+                probability.setText("NaN");
                 repc.setCanvas(canvas);
                 repc.clearCanvas();
                 repc.drawComponents();
                 repc.drawLines(start, reset, iterations, delay, probability, endpoint, random, middle);
                 break;
             case "MiddlePoint":
-                //Do Sth
+                probability.setText("NaN");
+                rmpc.setCanvas(canvas);
+                rmpc.clearCanvas();
+                rmpc.drawComponents();
+                rmpc.drawLines(start, reset, iterations, delay, probability, endpoint, random, middle);
                 break;
         }
     }
@@ -71,7 +77,7 @@ public class MethodController{
         canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
         probability.setText("NaN");
         switch (methodSwitch){
-            case "Point":
+            case "Radius":
                 //Do sth
                 break;
             case "EndPoint":
@@ -79,7 +85,8 @@ public class MethodController{
                 repc.drawComponents();
                 break;
             case "MiddlePoint":
-                //Do Sth
+                rmpc.setCanvas(canvas);
+                rmpc.drawComponents();
                 break;
         }
     }
@@ -99,21 +106,27 @@ public class MethodController{
     }
 
     @FXML
-    public void handleMiddlePoint(ActionEvent e) throws IOException{ //1/2
+    public void handleMiddlePoint(ActionEvent e) throws IOException{ //1/4
         methodSwitch = "MiddlePoint";
         method.setText("Random middle point");
         canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
         probability.setText("NaN");
         iterations.setText("1000");
         delay.setText("10");
+        rmpc.setCanvas(canvas);
+        rmpc.drawComponents();
     }
 
     @FXML
-    public void handlePoint(ActionEvent e) throws IOException{ //1/4
-        methodSwitch = "Point";
-        method.setText("Random point");
+    public void handlePoint(ActionEvent e) throws IOException{ //1/2
+        methodSwitch = "Radius";
+        method.setText("Random radius");
         canvas.getGraphicsContext2D().clearRect(0,0, canvas.getWidth(), canvas.getHeight());
+        probability.setText("NaN");
         iterations.setText("1000");
         delay.setText("10");
     }
+
+    //Basic Methods
+
 }
