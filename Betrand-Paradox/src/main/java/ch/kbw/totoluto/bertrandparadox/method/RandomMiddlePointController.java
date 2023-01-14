@@ -27,9 +27,9 @@ public class RandomMiddlePointController {
     public GraphicsContext graphicsContext;
     public Canvas canvas;
 
-    public RandomMiddlePointController(){
-        this.circle = new Circle(150);
-        this.triangle = new Triangle();
+    public RandomMiddlePointController(Circle circle, Triangle triangle){
+        this.circle = circle;
+        this.triangle = triangle;
     }
 
     //Set canvas of fxml to this one
