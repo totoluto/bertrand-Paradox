@@ -3,18 +3,10 @@ package ch.kbw.totoluto.bertrandparadox.method;
 import ch.kbw.totoluto.bertrandparadox.method.model.Circle;
 import ch.kbw.totoluto.bertrandparadox.method.model.Line;
 import ch.kbw.totoluto.bertrandparadox.method.model.Triangle;
-import javafx.application.Platform;
 import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @author totoluto (Dev alias)
