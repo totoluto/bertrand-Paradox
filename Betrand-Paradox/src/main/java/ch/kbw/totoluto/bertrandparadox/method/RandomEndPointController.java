@@ -4,8 +4,6 @@ import ch.kbw.totoluto.bertrandparadox.method.model.Circle;
 import ch.kbw.totoluto.bertrandparadox.method.model.Line;
 import ch.kbw.totoluto.bertrandparadox.method.model.Triangle;
 import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 import java.util.Random;
