@@ -15,12 +15,12 @@ public class Triangle {
     private Point2D cornerB;
     private Point2D cornerC;
 
-    public Triangle(){
+    public Triangle() {
 
     }
 
-    public void constructInCircle(Circle circle){
-        //Calculating position and height of triangle in circle
+    public void constructInCircle(Circle circle) {
+        // Calculating position and height of triangle in circle
         this.height = 1.5 * circle.getRadius();
         this.length = 2 * height / Math.sqrt(3);
 

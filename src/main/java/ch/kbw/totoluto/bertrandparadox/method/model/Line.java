@@ -11,7 +11,7 @@ public class Line {
     private Point2D startCord;
     private Point2D endCord;
 
-    public double getLength(){
+    public double getLength() {
         return Math.sqrt((Math.pow(startCord.getX() - endCord.getX(), 2) + Math.pow(startCord.getY() - endCord.getY(), 2)));
     }
 
