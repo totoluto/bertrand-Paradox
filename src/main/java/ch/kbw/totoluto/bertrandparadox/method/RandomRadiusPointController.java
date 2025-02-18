@@ -30,10 +30,15 @@ public class RandomRadiusPointController {
         Random random = new Random();
 
         for (int i = 0; i < iterations; i++) {
-            // Create random point
+            // Create random point between random circumference and circle Center
             double randomAngle = random.nextDouble() * Math.PI * 2.0;
             Point2D circumferencePoint = new Point2D(Math.cos(randomAngle) * radius + mid.getX(), Math.sin(randomAngle) * radius + mid.getY());
-            Point2D point = new Point2D(mid.getX() + (random.nextDouble() * (circumferencePoint.getX() - mid.getX() )), mid.getY() + (random.nextDouble() * (circumferencePoint.getY() -mid.getY())));
+            double randomFactor = random.nextDouble();
+
+            Point2D point = new Point2D(
+                    mid.getX() + randomFactor * (circumferencePoint.getX() - mid.getX()),
+                    mid.getY() + randomFactor * (circumferencePoint.getY() - mid.getY())
+            );
 
             // Calculate angle
             double angle = 90 + Math.atan2(point.getX() - mid.getX(), point.getY() - mid.getY()) * 180 / Math.PI;

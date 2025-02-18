@@ -54,8 +54,11 @@ public class MethodController {
     private String methodSwitch = "Radius";
 
     // Create Method controller
+    // 1/2
     private final RandomEndPointController repc = new RandomEndPointController(circle, triangle);
+    // 1/4
     private final RandomMiddlePointController rmpc = new RandomMiddlePointController(circle, triangle);
+    // 1/3
     private final RandomRadiusPointController rrpc = new RandomRadiusPointController(circle, triangle);
 
     @FXML
